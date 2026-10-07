@@ -107,7 +107,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --filter-udp=5055,5056,27001,27002 ^
 --out-range=-n4 ^
 --payload=all ^
---lua-desync=fake:blob=quic_yandex:repeats=12 ^
+--lua-desync=fake:blob=quic_yandex:repeats=12:payload=all ^
 --new ^
 
 --name="gamefiltertcp" ^
@@ -117,8 +117,8 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --out-range=-n4 ^
 --payload=tls_client_hello,unknown ^
---lua-desync=fake:blob=tls_vk:repeats=6:tls_mod=rnd,dupsid:sni=api.vk.ru:tcp_ts=-600000 ^
---lua-desync=hostfakesplit:host=api.vk.ru:disorder_after=midsld:tcp_ts=-600000 ^
+--lua-desync=fake:blob=tls_vk:repeats=6:tls_mod=rnd,dupsid:sni=api.vk.ru:tcp_ts=-600000:payload=tls_client_hello,unknown ^
+--lua-desync=hostfakesplit:host=api.vk.ru:disorder_after=midsld:tcp_ts=-600000:payload=tls_client_hello ^
 --payload=http_req ^
 --lua-desync=fake:blob=tls_vk:repeats=6:tls_mod=rnd,dupsid:sni=api.vk.ru:tcp_ts=-600000 ^
 --new ^
@@ -130,4 +130,4 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --out-range=-n4 ^
 --payload=all ^
---lua-desync=fake:blob=game_udp:repeats=10
+--lua-desync=fake:blob=game_udp:repeats=10:payload=all

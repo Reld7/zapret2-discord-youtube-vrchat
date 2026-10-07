@@ -30,93 +30,93 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 
 --name="domain quic" ^
 --filter-udp=443 ^
-  --hostlist="%LISTS%list-general.txt" ^
-  --hostlist="%LISTS%list-general-user.txt" ^
-  --hostlist-exclude="%LISTS%list-exclude.txt" ^
-  --hostlist-exclude="%LISTS%list-exclude-user.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
-  --payload=quic_initial ^
-  --lua-desync=fake:blob=quic_google:repeats=6 ^
+--hostlist="%LISTS%list-general.txt" ^
+--hostlist="%LISTS%list-general-user.txt" ^
+--hostlist-exclude="%LISTS%list-exclude.txt" ^
+--hostlist-exclude="%LISTS%list-exclude-user.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
+--payload=quic_initial ^
+--lua-desync=fake:blob=quic_google:repeats=6 ^
 --new ^
 
 --name="discord voice" ^
 --filter-udp=19294-19344,50000-50100 ^
-  --filter-l7=discord,stun ^
-  --payload=discord_ip_discovery,stun ^
-  --lua-desync=fake:blob=discord_udp:repeats=6 ^
+--filter-l7=discord,stun ^
+--payload=discord_ip_discovery,stun ^
+--lua-desync=fake:blob=discord_udp:repeats=6 ^
 --new ^
 
 --name="discord media" ^
 --filter-tcp=2053,2083,2087,2096,8443 ^
-  --hostlist-domains=discord.media ^
-  --payload=tls_client_hello ^
-  --lua-desync=hostfakesplit:host=www.google.com:tcp_ts=-600000 ^
+--hostlist-domains=discord.media ^
+--payload=tls_client_hello ^
+--lua-desync=hostfakesplit:host=www.google.com:tcp_ts=-600000 ^
 --new ^
 
 --name="youtube" ^
 --filter-tcp=443 ^
-  --hostlist="%LISTS%list-google.txt" ^
-  --payload=tls_client_hello ^
-  --lua-desync=hostfakesplit:host=www.google.com:tcp_ts=-600000:ip_id=zero ^
+--hostlist="%LISTS%list-google.txt" ^
+--payload=tls_client_hello ^
+--lua-desync=hostfakesplit:host=www.google.com:tcp_ts=-600000:ip_id=zero ^
 --new ^
 
 --name="domain tls" ^
 --filter-tcp=80,443 ^
-  --hostlist="%LISTS%list-general.txt" ^
-  --hostlist="%LISTS%list-general-user.txt" ^
-  --hostlist-exclude="%LISTS%list-exclude.txt" ^
-  --hostlist-exclude="%LISTS%list-exclude-user.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
-  --payload=tls_client_hello,http_req ^
-  --lua-desync=hostfakesplit:host=ozon.ru:tcp_ts=-600000:tcp_md5 ^
+--hostlist="%LISTS%list-general.txt" ^
+--hostlist="%LISTS%list-general-user.txt" ^
+--hostlist-exclude="%LISTS%list-exclude.txt" ^
+--hostlist-exclude="%LISTS%list-exclude-user.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
+--payload=tls_client_hello,http_req ^
+--lua-desync=hostfakesplit:host=ozon.ru:tcp_ts=-600000:tcp_md5 ^
 --new ^
 
 --name="ip quic" ^
 --filter-udp=443 ^
-  --ipset="%LISTS%ipset-all.txt" ^
-  --hostlist-exclude="%LISTS%list-exclude.txt" ^
-  --hostlist-exclude="%LISTS%list-exclude-user.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
-  --payload=quic_initial ^
-  --lua-desync=fake:blob=quic_google:repeats=6 ^
+--ipset="%LISTS%ipset-all.txt" ^
+--hostlist-exclude="%LISTS%list-exclude.txt" ^
+--hostlist-exclude="%LISTS%list-exclude-user.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
+--payload=quic_initial ^
+--lua-desync=fake:blob=quic_google:repeats=6 ^
 --new ^
 
 --name="ip tls" ^
 --filter-tcp=80,443,8443 ^
-  --ipset="%LISTS%ipset-all.txt" ^
-  --hostlist-exclude="%LISTS%list-exclude.txt" ^
-  --hostlist-exclude="%LISTS%list-exclude-user.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
-  --payload=tls_client_hello,http_req ^
-  --lua-desync=hostfakesplit:host=ozon.ru:tcp_ts=-600000 ^
+--ipset="%LISTS%ipset-all.txt" ^
+--hostlist-exclude="%LISTS%list-exclude.txt" ^
+--hostlist-exclude="%LISTS%list-exclude-user.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
+--payload=tls_client_hello,http_req ^
+--lua-desync=hostfakesplit:host=ozon.ru:tcp_ts=-600000 ^
 --new ^
 
 --name="photonengine udp" ^
 --filter-udp=5055,5056,27001,27002 ^
-  --payload=all ^
-  --out-range=-n4 ^
-  --lua-desync=fake:blob=quic_yandex:repeats=12:payload=all ^
+--out-range=-n4 ^
+--payload=all ^
+--lua-desync=fake:blob=quic_yandex:repeats=12 ^
 --new ^
 
 --name="gamefiltertcp" ^
 --filter-tcp=%GameFilterTCP% ^
-  --ipset="%LISTS%ipset-all.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
-  --payload=tls_client_hello,http_req,unknown ^
-  --out-range=-n3 ^
-  --lua-desync=hostfakesplit:host=ozon.ru:tcp_ts=-600000:payload=tls_client_hello,http_req,unknown ^
+--ipset="%LISTS%ipset-all.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
+--out-range=-n3 ^
+--payload=tls_client_hello,http_req,unknown ^
+--lua-desync=hostfakesplit:host=ozon.ru:tcp_ts=-600000 ^
 --new ^
 
 --name="gamefilterudp" ^
 --filter-udp=%GameFilterUDP% ^
-  --ipset="%LISTS%ipset-all.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude.txt" ^
-  --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
-  --payload=all ^
-  --out-range=-n2 ^
-  --lua-desync=fake:blob=game_udp:repeats=12:payload=all
+--ipset="%LISTS%ipset-all.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude.txt" ^
+--ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
+--out-range=-n2 ^
+--payload=all ^
+--lua-desync=fake:blob=game_udp:repeats=12

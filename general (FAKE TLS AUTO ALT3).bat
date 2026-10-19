@@ -18,11 +18,11 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --lua-init=@"%BIN%zapret-lib.lua" ^
 --lua-init=@"%BIN%zapret-antidpi.lua" ^
 --lua-init=@"%BIN%zapret-auto.lua" ^
---blob=quic_google:"%BIN%quic_initial_www_google_com.bin" ^
---blob=discord_udp:"%BIN%ACTIVE_DISCORD_UDP.bin" ^
---blob=tls_google:"%BIN%tls_clienthello_www_google_com.bin" ^
---blob=quic_yandex:"%BIN%quic_initial_quic_egress_yandex_net_no_kyber_ff.bin" ^
---blob=game_udp:"%BIN%ACTIVE_GAME_UDP.bin" ^
+--blob=quic_google:@"%BIN%quic_initial_www_google_com.bin" ^
+--blob=discord_udp:@"%BIN%ACTIVE_DISCORD_UDP.bin" ^
+--blob=tls_google:@"%BIN%tls_clienthello_www_google_com.bin" ^
+--blob=quic_yandex:@"%BIN%quic_initial_quic_egress_yandex_net_no_kyber_ff.bin" ^
+--blob=game_udp:@"%BIN%ACTIVE_GAME_UDP.bin" ^
 --wf-tcp-out=80,443,2053,2083,2087,2096,8443,%GameFilterTCP% ^
 --wf-udp-out=443,19294-19344,50000-50100,%GameFilterUDP% ^
 --wf-raw-part=@"%WD%windivert_part.vrchat.txt" ^
@@ -50,7 +50,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --filter-tcp=2053,2083,2087,2096,8443 ^
 --hostlist-domains=discord.media ^
 --payload=tls_client_hello ^
---lua-desync=fake:blob=tls_google:repeats=8:tcp_ts=-600000:tls_mod=rnd,dupsid:sni=www.google.com ^
+--lua-desync=fake:blob=tls_google:tls_mod=rnd,dupsid,sni=www.google.com:repeats=8:tcp_ts=-600000 ^
 --lua-desync=multisplit:pos=1:seqovl=670:seqovl_pattern=tls_google ^
 --new ^
 
@@ -58,7 +58,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --filter-tcp=443 ^
 --hostlist="%LISTS%list-google.txt" ^
 --payload=tls_client_hello ^
---lua-desync=fake:blob=tls_google:repeats=8:tcp_ts=-600000:tls_mod=rnd,dupsid:sni=www.google.com:ip_id=zero ^
+--lua-desync=fake:blob=tls_google:tls_mod=rnd,dupsid,sni=www.google.com:repeats=8:tcp_ts=-600000:ip_id=zero ^
 --lua-desync=multisplit:pos=1:seqovl=670:seqovl_pattern=tls_google:ip_id=zero ^
 --new ^
 
@@ -71,10 +71,10 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude.txt" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --payload=tls_client_hello ^
---lua-desync=fake:blob=tls_google:repeats=8:tcp_ts=-600000:tls_mod=rnd,dupsid:sni=www.google.com ^
+--lua-desync=fake:blob=tls_google:tls_mod=rnd,dupsid,sni=www.google.com:repeats=8:tcp_ts=-600000 ^
 --lua-desync=multisplit:pos=1:seqovl=670:seqovl_pattern=tls_google ^
 --payload=http_req ^
---lua-desync=fake:blob=tls_google:repeats=8:tcp_ts=-600000:tls_mod=rnd,dupsid:sni=www.google.com ^
+--lua-desync=fake:blob=tls_google:tls_mod=rnd,dupsid,sni=www.google.com:repeats=8:tcp_ts=-600000 ^
 --lua-desync=multisplit:pos=1:seqovl=670:seqovl_pattern=tls_google ^
 --new ^
 
@@ -97,10 +97,10 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude.txt" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --payload=tls_client_hello ^
---lua-desync=fake:blob=tls_google:repeats=8:tcp_ts=-600000:tls_mod=rnd,dupsid:sni=www.google.com ^
+--lua-desync=fake:blob=tls_google:tls_mod=rnd,dupsid,sni=www.google.com:repeats=8:tcp_ts=-600000 ^
 --lua-desync=multisplit:pos=1:seqovl=670:seqovl_pattern=tls_google ^
 --payload=http_req ^
---lua-desync=fake:blob=tls_google:repeats=8:tcp_ts=-600000:tls_mod=rnd,dupsid:sni=www.google.com ^
+--lua-desync=fake:blob=tls_google:tls_mod=rnd,dupsid,sni=www.google.com:repeats=8:tcp_ts=-600000 ^
 --lua-desync=multisplit:pos=1:seqovl=670:seqovl_pattern=tls_google ^
 --new ^
 
@@ -118,10 +118,10 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --out-range=-n4 ^
 --payload=tls_client_hello,unknown ^
---lua-desync=fake:blob=tls_google:repeats=8:tcp_ts=-600000:tls_mod=rnd,dupsid:sni=www.google.com:payload=tls_client_hello,unknown ^
+--lua-desync=fake:blob=tls_google:tls_mod=rnd,dupsid,sni=www.google.com:repeats=8:tcp_ts=-600000:payload=tls_client_hello,unknown ^
 --lua-desync=multisplit:pos=1:seqovl=670:seqovl_pattern=tls_google:payload=tls_client_hello,unknown ^
 --payload=http_req ^
---lua-desync=fake:blob=tls_google:repeats=8:tcp_ts=-600000:tls_mod=rnd,dupsid:sni=www.google.com ^
+--lua-desync=fake:blob=tls_google:tls_mod=rnd,dupsid,sni=www.google.com:repeats=8:tcp_ts=-600000 ^
 --lua-desync=multisplit:pos=1:seqovl=670:seqovl_pattern=tls_google ^
 --new ^
 

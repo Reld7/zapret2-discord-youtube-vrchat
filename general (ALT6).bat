@@ -18,11 +18,11 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --lua-init=@"%BIN%zapret-lib.lua" ^
 --lua-init=@"%BIN%zapret-antidpi.lua" ^
 --lua-init=@"%BIN%zapret-auto.lua" ^
---blob=quic_google:"%BIN%quic_initial_www_google_com.bin" ^
---blob=discord_udp:"%BIN%ACTIVE_DISCORD_UDP.bin" ^
---blob=tls_google:"%BIN%tls_clienthello_www_google_com.bin" ^
---blob=quic_yandex:"%BIN%quic_initial_quic_egress_yandex_net_no_kyber_ff.bin" ^
---blob=game_udp:"%BIN%ACTIVE_GAME_UDP.bin" ^
+--blob=quic_google:@"%BIN%quic_initial_www_google_com.bin" ^
+--blob=discord_udp:@"%BIN%ACTIVE_DISCORD_UDP.bin" ^
+--blob=tls_google:@"%BIN%tls_clienthello_www_google_com.bin" ^
+--blob=quic_yandex:@"%BIN%quic_initial_quic_egress_yandex_net_no_kyber_ff.bin" ^
+--blob=game_udp:@"%BIN%ACTIVE_GAME_UDP.bin" ^
 --wf-tcp-out=80,443,2053,2083,2087,2096,8443,%GameFilterTCP% ^
 --wf-udp-out=443,19294-19344,50000-50100,%GameFilterUDP% ^
 --wf-raw-part=@"%WD%windivert_part.vrchat.txt" ^

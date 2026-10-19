@@ -18,12 +18,12 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --lua-init=@"%BIN%zapret-lib.lua" ^
 --lua-init=@"%BIN%zapret-antidpi.lua" ^
 --lua-init=@"%BIN%zapret-auto.lua" ^
---blob=quic_google:"%BIN%quic_initial_www_google_com.bin" ^
---blob=discord_udp:"%BIN%ACTIVE_DISCORD_UDP.bin" ^
---blob=tls_google:"%BIN%tls_clienthello_www_google_com.bin" ^
---blob=stun_bin:"%BIN%stun.bin" ^
---blob=quic_yandex:"%BIN%quic_initial_quic_egress_yandex_net_no_kyber_ff.bin" ^
---blob=game_udp:"%BIN%ACTIVE_GAME_UDP.bin" ^
+--blob=quic_google:@"%BIN%quic_initial_www_google_com.bin" ^
+--blob=discord_udp:@"%BIN%ACTIVE_DISCORD_UDP.bin" ^
+--blob=tls_google:@"%BIN%tls_clienthello_www_google_com.bin" ^
+--blob=stun_bin:@"%BIN%stun.bin" ^
+--blob=quic_yandex:@"%BIN%quic_initial_quic_egress_yandex_net_no_kyber_ff.bin" ^
+--blob=game_udp:@"%BIN%ACTIVE_GAME_UDP.bin" ^
 --wf-tcp-out=80,443,2053,2083,2087,2096,8443,%GameFilterTCP% ^
 --wf-udp-out=443,19294-19344,50000-50100,%GameFilterUDP% ^
 --wf-raw-part=@"%WD%windivert_part.vrchat.txt" ^
@@ -51,7 +51,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --filter-tcp=2053,2083,2087,2096,8443 ^
 --hostlist-domains=discord.media ^
 --payload=tls_client_hello ^
---lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=1000:tcp_ack=-66000:tcp_ts_up ^
+--lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=-10000:tcp_ack=-66000:tcp_ts_up ^
 --lua-desync=multisplit:pos=sniext+1,midsld:seqovl=1 ^
 --new ^
 
@@ -59,7 +59,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --filter-tcp=443 ^
 --hostlist="%LISTS%list-google.txt" ^
 --payload=tls_client_hello ^
---lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=1000:tcp_ack=-66000:tcp_ts_up:ip_id=zero ^
+--lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=-10000:tcp_ack=-66000:tcp_ts_up:ip_id=zero ^
 --lua-desync=multisplit:pos=sniext+1,midsld:seqovl=1:ip_id=zero ^
 --new ^
 
@@ -72,11 +72,11 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude.txt" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --payload=tls_client_hello ^
---lua-desync=fake:blob=stun_bin:repeats=6:tcp_seq=1000:tcp_ack=-66000:tcp_ts_up ^
---lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=1000:tcp_ack=-66000:tcp_ts_up ^
+--lua-desync=fake:blob=stun_bin:repeats=6:tcp_seq=-10000:tcp_ack=-66000:tcp_ts_up ^
+--lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=-10000:tcp_ack=-66000:tcp_ts_up ^
 --lua-desync=multisplit:pos=sniext+1,midsld:seqovl=1 ^
 --payload=http_req ^
---lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=1000:tcp_ack=-66000:tcp_ts_up ^
+--lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=-10000:tcp_ack=-66000:tcp_ts_up ^
 --new ^
 
 --name="ip quic" ^
@@ -98,11 +98,11 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude.txt" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --payload=tls_client_hello ^
---lua-desync=fake:blob=stun_bin:repeats=6:tcp_seq=1000:tcp_ack=-66000:tcp_ts_up ^
---lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=1000:tcp_ack=-66000:tcp_ts_up ^
+--lua-desync=fake:blob=stun_bin:repeats=6:tcp_seq=-10000:tcp_ack=-66000:tcp_ts_up ^
+--lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=-10000:tcp_ack=-66000:tcp_ts_up ^
 --lua-desync=multisplit:pos=sniext+1,midsld:seqovl=1 ^
 --payload=http_req ^
---lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=1000:tcp_ack=-66000:tcp_ts_up ^
+--lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=-10000:tcp_ack=-66000:tcp_ts_up ^
 --new ^
 
 --name="photonengine udp" ^
@@ -119,11 +119,11 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --out-range=-n3 ^
 --payload=tls_client_hello,unknown ^
---lua-desync=fake:blob=stun_bin:repeats=6:tcp_seq=1000:tcp_ack=-66000:tcp_ts_up:payload=tls_client_hello,unknown ^
---lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=1000:tcp_ack=-66000:tcp_ts_up:payload=tls_client_hello,unknown ^
+--lua-desync=fake:blob=stun_bin:repeats=6:tcp_seq=-10000:tcp_ack=-66000:tcp_ts_up:payload=tls_client_hello,unknown ^
+--lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=-10000:tcp_ack=-66000:tcp_ts_up:payload=tls_client_hello,unknown ^
 --lua-desync=multisplit:pos=sniext+1,midsld:seqovl=1:payload=tls_client_hello ^
 --payload=http_req ^
---lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=1000:tcp_ack=-66000:tcp_ts_up ^
+--lua-desync=fake:blob=tls_google:repeats=6:tcp_seq=-10000:tcp_ack=-66000:tcp_ts_up ^
 --new ^
 
 --name="gamefilterudp" ^

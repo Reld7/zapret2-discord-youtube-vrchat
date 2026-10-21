@@ -72,10 +72,10 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude.txt" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --payload=tls_client_hello ^
---lua-desync=fake:blob=stun_bin:repeats=6:tcp_ts=-600000: ^
+--lua-desync=fake:blob=stun_bin:repeats=6:tcp_ts=-600000 ^
 --lua-desync=fake:blob=tls_google:repeats=6:tcp_ts=-600000 ^
 --lua-desync=fakedsplit:pattern=0x00:tcp_ts=-600000:ip_id=zero ^
---payload=http_req
+--payload=http_req ^
 --lua-desync=fake:blob=tls_google:repeats=6:tcp_ts=-600000 ^
 --lua-desync=fakedsplit:pattern=0x00:tcp_ts=-600000:ip_id=zero ^
 --new ^
@@ -102,7 +102,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --lua-desync=fake:blob=stun_bin:repeats=6:tcp_ts=-600000 ^
 --lua-desync=fake:blob=tls_google:repeats=6:tcp_ts=-600000 ^
 --lua-desync=fakedsplit:pattern=0x00:tcp_ts=-600000:ip_id=zero ^
---payload=http_req
+--payload=http_req ^
 --lua-desync=fake:blob=tls_google:repeats=6:tcp_ts=-600000 ^
 --lua-desync=fakedsplit:pattern=0x00:tcp_ts=-600000:ip_id=zero ^
 --new ^
@@ -124,7 +124,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --lua-desync=fake:blob=stun_bin:repeats=6:tcp_ts=-600000:payload=tls_client_hello,unknown ^
 --lua-desync=fake:blob=tls_google:repeats=6:tcp_ts=-600000:payload=tls_client_hello,unknown ^
 --lua-desync=fakedsplit:pattern=0x00:tcp_ts=-600000:ip_id=zero:payload=tls_client_hello ^
---payload=http_req
+--payload=http_req ^
 --lua-desync=fake:blob=tls_google:repeats=6:tcp_ts=-600000 ^
 --lua-desync=fakedsplit:pattern=0x00:tcp_ts=-600000:ip_id=zero ^
 --new ^

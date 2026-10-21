@@ -52,7 +52,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --hostlist-domains=discord.media ^
 --payload=tls_client_hello ^
 --lua-desync=fake:blob=tls_google:tls_mod=rnd,dupsid,sni=www.google.com:repeats=6:tcp_ts=-600000 ^
---lua-desync=hostfakesplit:host=www.google.com:disorder_after=midsld:tcp_ts=-600000 ^
+--lua-desync=hostfakesplit:host=www.google.com:midhost=midsld:tcp_ts=-600000 ^
 --new ^
 
 --name="youtube" ^
@@ -60,7 +60,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --hostlist="%LISTS%list-google.txt" ^
 --payload=tls_client_hello ^
 --lua-desync=fake:blob=tls_google:tls_mod=rnd,dupsid,sni=www.google.com:repeats=6:tcp_ts=-600000:ip_id=zero ^
---lua-desync=hostfakesplit:host=www.google.com:disorder_after=midsld:tcp_ts=-600000:ip_id=zero ^
+--lua-desync=hostfakesplit:host=www.google.com:midhost=midsld:tcp_ts=-600000:ip_id=zero ^
 --new ^
 
 --name="domain tls" ^
@@ -73,7 +73,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --payload=tls_client_hello ^
 --lua-desync=fake:blob=tls_vk:tls_mod=rnd,dupsid,sni=api.vk.ru:repeats=6:tcp_ts=-600000 ^
---lua-desync=hostfakesplit:host=api.vk.ru:disorder_after=midsld:tcp_ts=-600000 ^
+--lua-desync=hostfakesplit:host=api.vk.ru:midhost=midsld:tcp_ts=-600000 ^
 --payload=http_req ^
 --lua-desync=fake:blob=tls_vk:tls_mod=rnd,dupsid,sni=api.vk.ru:repeats=6:tcp_ts=-600000 ^
 --new ^
@@ -98,7 +98,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --payload=tls_client_hello ^
 --lua-desync=fake:blob=tls_vk:tls_mod=rnd,dupsid,sni=api.vk.ru:repeats=6:tcp_ts=-600000 ^
---lua-desync=hostfakesplit:host=api.vk.ru:disorder_after=midsld:tcp_ts=-600000 ^
+--lua-desync=hostfakesplit:host=api.vk.ru:midhost=midsld:tcp_ts=-600000 ^
 --payload=http_req ^
 --lua-desync=fake:blob=tls_vk:tls_mod=rnd,dupsid,sni=api.vk.ru:repeats=6:tcp_ts=-600000 ^
 --new ^
@@ -118,7 +118,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --out-range=-n4 ^
 --payload=tls_client_hello,unknown ^
 --lua-desync=fake:blob=tls_vk:tls_mod=rnd,dupsid,sni=api.vk.ru:repeats=6:tcp_ts=-600000:payload=tls_client_hello,unknown ^
---lua-desync=hostfakesplit:host=api.vk.ru:disorder_after=midsld:tcp_ts=-600000:payload=tls_client_hello ^
+--lua-desync=hostfakesplit:host=api.vk.ru:midhost=midsld:tcp_ts=-600000:payload=tls_client_hello ^
 --payload=http_req ^
 --lua-desync=fake:blob=tls_vk:tls_mod=rnd,dupsid,sni=api.vk.ru:repeats=6:tcp_ts=-600000 ^
 --new ^

@@ -74,7 +74,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --payload=tls_client_hello ^
 --lua-desync=fake:blob=stun2:repeats=5:tcp_ts=-600000 ^
 --lua-desync=fake:blob=tls_sochi:repeats=5:tcp_ts=-600000 ^
---lua-desync=hostfakesplit:host=mail.ru:disorder_after=sniext:repeats=8:tcp_ts=-600000 ^
+--lua-desync=hostfakesplit:host=mail.ru:repeats=8:tcp_ts=-600000 ^
 --payload=http_req ^
 --lua-desync=fake:blob=tls_sochi:repeats=5:tcp_ts=-600000 ^
 --new ^
@@ -100,7 +100,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --payload=tls_client_hello ^
 --lua-desync=fake:blob=stun2:repeats=5:tcp_ts=-600000 ^
 --lua-desync=fake:blob=tls_sochi:repeats=5:tcp_ts=-600000 ^
---lua-desync=hostfakesplit:host=mail.ru:disorder_after=sniext:repeats=8:tcp_ts=-600000 ^
+--lua-desync=hostfakesplit:host=mail.ru:repeats=8:tcp_ts=-600000 ^
 --payload=http_req ^
 --lua-desync=fake:blob=tls_sochi:repeats=5:tcp_ts=-600000 ^
 --new ^
@@ -121,7 +121,7 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --payload=tls_client_hello,unknown ^
 --lua-desync=fake:blob=stun2:repeats=5:tcp_ts=-600000:payload=tls_client_hello,unknown ^
 --lua-desync=fake:blob=tls_sochi:repeats=5:tcp_ts=-600000:payload=tls_client_hello,unknown ^
---lua-desync=hostfakesplit:host=mail.ru:disorder_after=sniext:repeats=8:tcp_ts=-600000:payload=tls_client_hello ^
+--lua-desync=hostfakesplit:host=mail.ru:repeats=8:tcp_ts=-600000:payload=tls_client_hello ^
 --payload=http_req ^
 --lua-desync=fake:blob=tls_sochi:repeats=5:tcp_ts=-600000 ^
 --new ^

@@ -54,7 +54,6 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --hostlist-domains=discord.media ^
 --payload=tls_client_hello ^
 --lua-desync=fake:blob=tls_google:repeats=8:tcp_ts=-600000 ^
---lua-desync=fake:blob=tls_google:repeats=8:tcp_ts=-600000 ^
 --lua-desync=multisplit:pos=1:seqovl=670:seqovl_pattern=tls_google ^
 --new ^
 

@@ -137,5 +137,5 @@ start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
 --ipset-exclude="%LISTS%ipset-exclude-user.txt" ^
 --out-range=-n4 ^
 --payload=all ^
---lua-desync=fake:blob=quic_4pda:repeats=5 ^
+--lua-desync=fake:blob=quic_4pda:repeats=5:payload=all ^
 --lua-desync=fake:blob=game_udp:repeats=5:payload=all

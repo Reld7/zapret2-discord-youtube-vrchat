@@ -3,7 +3,7 @@
 Оригинальный проект: [bol-van/zapret2](https://github.com/bol-van/zapret2)
 
 >[!IMPORTANT]
->Все исполняемые и системные файлы в папке [bin](https://github.com/Reld7/zapret2-discord-youtube-vrchat/tree/main/bin) взяты из [zapret2/releases/v1.0.5.2](https://github.com/bol-van/zapret2/releases/tag/v1.0.5.2)
+>Все исполняемые и системные файлы в папке [bin](https://github.com/Reld7/zapret2-discord-youtube-vrchat/tree/main/bin) взяты из [zapret2/releases/](https://github.com/bol-van/zapret2/releases)
 >Вы можете это проверить с помощью хэшей
 >```
 >certutil -hashfile "путькфайлу" SHA256

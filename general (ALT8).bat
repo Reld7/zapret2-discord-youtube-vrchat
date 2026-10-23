@@ -12,12 +12,13 @@ echo:
 set "BIN=%~dp0bin\"
 set "LISTS=%~dp0lists\"
 set "WD=%~dp0windivert.filter\"
+set "LUA=%~dp0lua\"
 cd /d %BIN%
 
 start "zapret2: %~n0" /min "%BIN%winws2.exe" ^
---lua-init=@"%BIN%zapret-lib.lua" ^
---lua-init=@"%BIN%zapret-antidpi.lua" ^
---lua-init=@"%BIN%zapret-auto.lua" ^
+--lua-init=@"%LUA%zapret-lib.lua" ^
+--lua-init=@"%LUA%zapret-antidpi.lua" ^
+--lua-init=@"%LUA%zapret-auto.lua" ^
 --blob=quic_google:@"%BIN%quic_initial_www_google_com.bin" ^
 --blob=discord_udp:@"%BIN%ACTIVE_DISCORD_UDP.bin" ^
 --blob=tls_okcdn:@"%BIN%tls_clienthello_api_okcdn_ru_no_kyber_ff.bin" ^
